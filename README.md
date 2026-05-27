@@ -1,43 +1,39 @@
-# Astro Starter Kit: Minimal
+# Ademir Kadrić — Personal Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+World-class personal portfolio built with **Astro 6**, **React 19**, **GSAP 3**, and **Tailwind CSS v4**.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Design
 
-## 🚀 Project Structure
+**Newspaper Brutalist** — bone-white `#f3efe4` / near-black `#1a1a18` / Manthey Racing dark green `#1A4D35`. Bebas Neue headlines, Space Mono monospace accents, Outfit body text.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Sections
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- **Hero** — Scroll-pinned SVG precision ring (outer +100°, inner −65° counter-rotate). Animated stat counters.
+- **Work** — Clip-path reveal + draggable carousel + CSS `:has()` hover group.
+- **Stack** — Apple camera-stops: 9 × 800px GSAP pin, direction-aware panel transitions, expertise bars.
+- **Services** — Editorial bands, GSAP stagger entrance.
+- **About** — Counter animation, Germany SVG topo map, Stuttgart pulsing dot.
+- **Contact** — Netlify Forms.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Commands
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Command | Action |
+|---|---|
+| `npm install` | Install deps |
+| `npm run dev` | Dev server at `localhost:4321` |
+| `npm run build` | Production build → `./dist/` |
+| `npm run preview` | Preview production build |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Deploy to Netlify
 
-## 🧞 Commands
+1. Create repo on GitHub: [github.com/new](https://github.com/new) → name it `portfolio`
+2. `git remote add origin https://github.com/Dame2R/portfolio.git`
+3. `git push -u origin main`
+4. In Netlify: New site → Import from GitHub → `Dame2R/portfolio`
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+5. Deploy — the `netlify.toml` already configures everything.
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Ademir Kadrić · Stuttgart, DE · [github.com/Dame2R](https://github.com/Dame2R)
