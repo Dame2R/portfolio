@@ -1,4 +1,4 @@
-# Ademir Kadrić — Personal Portfolio
+# Afsin Demir — Personal Portfolio
 
 World-class personal portfolio built with **Astro 6**, **React 19**, **GSAP 3**, and **Tailwind CSS v4**.
 
@@ -36,4 +36,4 @@ World-class personal portfolio built with **Astro 6**, **React 19**, **GSAP 3**,
 
 ---
 
-Ademir Kadrić · Stuttgart, DE · [github.com/Dame2R](https://github.com/Dame2R)
+Afsin Demir · Stuttgart, DE · [github.com/Dame2R](https://github.com/Dame2R)
