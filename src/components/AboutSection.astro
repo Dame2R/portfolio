@@ -1,0 +1,200 @@
+---
+const interests = ['Automotive', 'UI / Motion Design', 'Product Strategy', 'Photography', 'Architecture', 'Music'];
+---
+<section id="about" class="band band--ink">
+  <div class="wrap about-grid">
+    <!-- Left: bio + counters + interests -->
+    <div class="about-left">
+      <span class="section-label" style="color:rgba(243,239,228,.4)">005 — Who Am I</span>
+      <h2 class="about-hl t-display reveal">About<br/>Me</h2>
+      <p class="about-bio reveal">
+        Full-stack developer and product manager based in Stuttgart, Germany.
+        I build end-to-end digital products — from pixel-perfect frontends to
+        solid TypeScript backends — with a relentless focus on performance,
+        accessibility, and craft. When I'm not coding, I'm obsessing over
+        cars, good design, and finding the cleanest solution to a messy problem.
+      </p>
+
+      <div class="about-counters reveal">
+        <div class="about-counter">
+          <span class="ac-num t-display" data-target="12" data-suffix="+">0+</span>
+          <span class="ac-label t-mono">Projects Shipped</span>
+        </div>
+        <div class="about-counter">
+          <span class="ac-num t-display" data-target="4" data-suffix=" yrs">0 yrs</span>
+          <span class="ac-label t-mono">Experience</span>
+        </div>
+        <div class="about-counter">
+          <span class="ac-num t-display" data-target="3" data-suffix=" stacks">0 stacks</span>
+          <span class="ac-label t-mono">Mastered</span>
+        </div>
+      </div>
+
+      <div class="about-interests reveal">
+        <span class="section-label" style="color:rgba(243,239,228,.4);display:block;margin-bottom:.75rem">
+          Interests
+        </span>
+        <div class="interests-list">
+          {interests.map(i => (
+            <span class="interest-tag t-mono">{i}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Germany topographic map -->
+    <div class="about-right">
+      <div class="map-card reveal">
+        <div class="map-header t-mono">
+          <span>DE — Stuttgart</span>
+          <span style="opacity:.4">48.78°N · 9.18°E</span>
+        </div>
+        <div class="map-body">
+          <svg viewBox="0 0 320 400" fill="none" xmlns="http://www.w3.org/2000/svg"
+               role="img" aria-label="Map of Germany highlighting Stuttgart">
+            <!-- Topographic contour lines -->
+            <g stroke="rgba(61,139,101,.06)" stroke-width="1" fill="none">
+              <ellipse cx="155" cy="200" rx="145" ry="180"/>
+              <ellipse cx="155" cy="200" rx="125" ry="155"/>
+              <ellipse cx="155" cy="200" rx="105" ry="130"/>
+              <ellipse cx="155" cy="200" rx="85"  ry="105"/>
+              <ellipse cx="155" cy="200" rx="65"  ry="80"/>
+              <ellipse cx="155" cy="200" rx="45"  ry="55"/>
+            </g>
+            <!-- Germany outline (simplified real coordinates, lat/lon mapped) -->
+            <!-- x = (lon - 5.9) * 35.2, y = (55.1 - lat) * 51.3 -->
+            <path
+              d="M196,14 L212,18 L228,14 L244,20 L254,30 L250,44 L258,52 L264,66 L258,76
+                 L250,72 L240,82 L244,94 L254,100 L266,110 L272,124 L268,138 L276,150
+                 L278,164 L272,176 L266,188 L272,202 L268,216 L260,226 L252,234 L246,248
+                 L250,260 L246,274 L238,282 L226,286 L218,296 L212,308 L204,318 L194,324
+                 L182,326 L170,322 L158,326 L146,322 L134,316 L120,310 L110,316 L100,324
+                 L88,320 L78,312 L72,300 L76,288 L70,278 L62,266 L56,254 L54,242 L60,230
+                 L56,218 L48,208 L44,196 L52,186 L48,174 L52,162 L60,152 L56,140 L50,128
+                 L54,116 L64,108 L72,98 L68,86 L74,76 L84,70 L92,62 L96,50 L104,42
+                 L114,36 L126,30 L140,24 L154,18 L168,14 L182,12 L196,14Z"
+              stroke="rgba(61,139,101,.55)" stroke-width="1.5"
+              fill="rgba(26,77,53,.07)"
+            />
+            <!-- Major cities (muted dots) -->
+            <g fill="rgba(61,139,101,.3)">
+              <circle cx="140" cy="77"  r="2.5"/><!-- Hamburg -->
+              <circle cx="262" cy="131" r="2.5"/><!-- Berlin -->
+              <circle cx="97"  cy="253" r="2.5"/><!-- Frankfurt -->
+              <circle cx="196" cy="350" r="2.5"/><!-- Munich -->
+              <circle cx="38"  cy="213" r="2.5"/><!-- Cologne -->
+              <circle cx="67"  cy="245" r="2"/><!-- Düsseldorf -->
+            </g>
+            <!-- Stuttgart pulsing dot: x≈115, y≈316 -->
+            <circle class="pulse-ring pulse-ring-1" cx="115" cy="316" r="12"
+              fill="none" stroke="var(--m3)" stroke-width="1"/>
+            <circle class="pulse-ring pulse-ring-2" cx="115" cy="316" r="6"
+              fill="none" stroke="var(--m3)" stroke-width="1.5"/>
+            <circle cx="115" cy="316" r="3.5" fill="var(--m3)"/>
+            <text x="123" y="320" font-family="Space Mono,monospace"
+              font-size="7.5" fill="rgba(61,139,101,.75)" letter-spacing=".07em">
+              Stuttgart
+            </text>
+          </svg>
+        </div>
+        <div class="map-footer t-mono">
+          <span>Based here since 2002</span>
+          <span style="color:var(--m3)">● Live</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+  .about-hl {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    color: var(--paper); line-height: .88;
+    margin: 1rem 0 2rem;
+  }
+  .about-bio {
+    font-family: 'Outfit', sans-serif;
+    font-size: .98rem; line-height: 1.8;
+    color: rgba(243,239,228,.65);
+    max-width: 44ch; margin-bottom: 3rem;
+  }
+  .about-counters { display: flex; gap: 2.5rem; margin-bottom: 3rem; }
+  .ac-num {
+    font-size: 2.75rem; color: var(--paper); display: block;
+    line-height: 1;
+  }
+  .ac-label {
+    font-size: .58rem; letter-spacing: .15em; text-transform: uppercase;
+    opacity: .4; display: block; margin-top: .3rem;
+  }
+  .interests-list { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .interest-tag {
+    font-size: .62rem; letter-spacing: .08em;
+    border: 1px solid rgba(61,139,101,.35);
+    color: var(--m3); padding: .28rem .7rem;
+  }
+
+  /* Map */
+  .map-card {
+    border: 1px solid rgba(61,139,101,.18);
+    background: rgba(26,77,53,.05);
+  }
+  .map-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: .875rem 1.25rem;
+    border-bottom: 1px solid rgba(61,139,101,.12);
+    font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(243,239,228,.45);
+  }
+  .map-body { padding: 1.5rem; }
+  .map-body svg { width: 100%; height: auto; display: block; }
+  .map-footer {
+    display: flex; justify-content: space-between;
+    padding: .75rem 1.25rem;
+    border-top: 1px solid rgba(61,139,101,.1);
+    font-size: .6rem; letter-spacing: .1em; text-transform: uppercase;
+    color: rgba(243,239,228,.3);
+  }
+
+  /* Pulse animation */
+  @keyframes pulse-expand {
+    0%   { r: 12; opacity: .6; }
+    70%  { r: 22; opacity: 0;  }
+    100% { r: 12; opacity: 0;  }
+  }
+  @keyframes pulse-mid {
+    0%   { r: 6; opacity: .8; }
+    70%  { r: 10; opacity: 0; }
+    100% { r: 6; opacity: 0;  }
+  }
+  .pulse-ring-1 { animation: pulse-expand 2.6s ease-out infinite; }
+  .pulse-ring-2 { animation: pulse-mid   2.6s ease-out infinite .5s; }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const counters = document.querySelectorAll<HTMLElement>('.ac-num[data-target]');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target as HTMLElement;
+      if (el.dataset.counted) return;
+      el.dataset.counted = '1';
+      const target = parseInt(el.dataset.target ?? '0');
+      const suffix = el.dataset.suffix ?? '';
+      gsap.to({ val: 0 }, {
+        val: target, duration: 2, ease: 'power2.out',
+        onUpdate() { el.textContent = Math.round(this.targets()[0].val) + suffix; },
+      });
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(el => obs.observe(el));
+</script>

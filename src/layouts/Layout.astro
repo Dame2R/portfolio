@@ -1,0 +1,81 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Ademir Kadrić — Full-Stack Developer & PM',
+  description = 'Stuttgart-based full-stack developer and product manager building polished digital products.',
+} = Astro.props;
+const site = 'https://ademirkadrić.dev';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a1a18" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={site} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${site}/og.jpg`} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <div id="loader">
+      <span class="t-mono" style="color:var(--paper);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase">
+        Loading
+      </span>
+    </div>
+    <canvas id="noise-canvas" aria-hidden="true"></canvas>
+
+    <slot />
+
+    <script>
+      // Noise film grain
+      const canvas = document.getElementById('noise-canvas') as HTMLCanvasElement;
+      const ctx = canvas.getContext('2d')!;
+      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+      let frame = 0;
+      function drawNoise() {
+        const w = canvas.width, h = canvas.height;
+        const img = ctx.createImageData(w, h);
+        const d = img.data;
+        for (let i = 0; i < d.length; i += 4) {
+          const v = Math.random() * 255 | 0;
+          d[i] = d[i+1] = d[i+2] = v; d[i+3] = 255;
+        }
+        ctx.putImageData(img, 0, 0);
+        if (++frame % 3 === 0) requestAnimationFrame(drawNoise);
+        else setTimeout(() => requestAnimationFrame(drawNoise), 80);
+      }
+      requestAnimationFrame(drawNoise);
+
+      // Dismiss loader on window load
+      window.addEventListener('load', () => {
+        const loader = document.getElementById('loader')!;
+        loader.classList.add('done');
+        setTimeout(() => loader.remove(), 800);
+      });
+
+      // Simple scroll reveal
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

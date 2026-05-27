@@ -1,0 +1,74 @@
+---
+import { services } from '../data/services';
+---
+<section id="services" class="band band--paper">
+  <div class="wrap">
+    <span class="section-label">004 — What I Do</span>
+    <h2 class="services-hl t-display reveal">Services</h2>
+  </div>
+
+  <div class="services-list">
+    {services.map((s) => (
+      <div class="service-row">
+        <span class="service-num t-mono">{s.number}</span>
+        <h3 class="service-title t-display">{s.title}</h3>
+        <p class="service-desc">{s.description}</p>
+        <span class="service-arrow" aria-hidden="true">→</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .services-hl {
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    margin: 1rem 0 3rem; line-height: .88;
+  }
+  .services-list {
+    border-top: 1px solid rgba(26,26,24,.12);
+  }
+  .service-row {
+    display: grid;
+    grid-template-columns: 4rem 1fr 2fr auto;
+    align-items: center; gap: 2rem;
+    padding: 2.2rem 2.5rem;
+  }
+  .service-num {
+    font-size: .65rem; opacity: .35; letter-spacing: .18em;
+    color: var(--ink);
+  }
+  .service-title {
+    font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+    color: var(--ink); line-height: 1;
+  }
+  .service-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: .8rem; color: var(--mid);
+    line-height: 1.65;
+  }
+  .service-arrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    opacity: 0; transform: translateX(-10px);
+    transition: opacity .35s ease, transform .35s var(--ease-expo);
+  }
+  .service-row:hover .service-arrow {
+    opacity: 1; transform: translateX(0);
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const rows = document.querySelectorAll<HTMLElement>('.service-row');
+  gsap.fromTo(rows,
+    { opacity: 0, x: -40 },
+    {
+      opacity: 1, x: 0,
+      stagger: .09, duration: .7, ease: 'expo.out',
+      scrollTrigger: { trigger: '#services', start: 'top 75%', once: true },
+    }
+  );
+</script>

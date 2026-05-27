@@ -1,0 +1,54 @@
+---
+const links = [
+  { href: '#work',     label: 'Work'     },
+  { href: '#stack',    label: 'Stack'    },
+  { href: '#services', label: 'Services' },
+  { href: '#about',    label: 'About'    },
+  { href: '#contact',  label: 'Contact'  },
+];
+---
+<nav id="site-nav" aria-label="Main navigation">
+  <div class="nav-inner wrap">
+    <a href="/" class="nav-logo t-display" aria-label="Home">AK</a>
+    <ul role="list" class="nav-links">
+      {links.map(l => (
+        <li><a href={l.href} class="nav-link">{l.label}</a></li>
+      ))}
+    </ul>
+    <a href="mailto:hello@ademirkadrić.dev" class="nav-cta t-mono">
+      Hire me ↗
+    </a>
+  </div>
+</nav>
+
+<style>
+  #site-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    mix-blend-mode: difference;
+    padding: 1.25rem 0;
+  }
+  .nav-inner {
+    display: flex; align-items: center; gap: 3rem;
+  }
+  .nav-logo {
+    font-size: 1.75rem; color: var(--paper);
+    text-decoration: none; line-height: 1;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none; flex: 1;
+  }
+  .nav-links .nav-link { color: var(--paper); }
+  .nav-cta {
+    margin-left: auto;
+    font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--paper); text-decoration: none;
+    border: 1px solid currentColor; padding: .5rem 1rem;
+    transition: background .3s ease, color .3s ease;
+  }
+  .nav-cta:hover { background: var(--paper); color: var(--ink); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-cta { margin-left: auto; }
+  }
+</style>

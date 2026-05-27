@@ -1,0 +1,10 @@
+---
+import { stack } from '../data/stack';
+import StackCameraStops from './StackCameraStops';
+---
+<section id="stack" class="band band--ink" style="padding:0">
+  <div class="wrap" style="padding-top:5rem;padding-bottom:2rem">
+    <span class="section-label" style="color:rgba(243,239,228,.4)">003 — Tech Stack</span>
+  </div>
+  <StackCameraStops techs={stack} client:load />
+</section>

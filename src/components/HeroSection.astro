@@ -1,0 +1,210 @@
+---
+// Hero section — scroll-pinned precision ring
+---
+<section id="hero" class="hero-section band--paper">
+  <!-- Precision instrument ring: outer rotates +100°, inner -65° on scroll -->
+  <div class="ring-wrap" aria-hidden="true">
+    <svg class="ring-outer" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="200" r="190" stroke="rgba(26,26,24,.1)" stroke-width="1"/>
+      <!-- Cardinal labels -->
+      <text x="200" y="22"  text-anchor="middle" class="cardinal">N</text>
+      <text x="386" y="206" text-anchor="middle" class="cardinal">E</text>
+      <text x="200" y="394" text-anchor="middle" class="cardinal">S</text>
+      <text x="14"  y="206" text-anchor="middle" class="cardinal">W</text>
+      <!-- Corner precision brackets -->
+      <path d="M28 28 L28 52 M28 28 L52 28" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M372 28 L372 52 M372 28 L348 28" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M28 372 L28 348 M28 372 L52 372" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M372 372 L372 348 M372 372 L348 372" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Tick marks: 60 total, long every 30° -->
+      <g id="outer-ticks"></g>
+    </svg>
+
+    <svg class="ring-inner" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="200" r="80" stroke="rgba(26,26,24,.15)" stroke-width="1"/>
+      <!-- Aperture segments -->
+      <path d="M200 120 A80 80 0 0 1 269 161" stroke="var(--ink)" stroke-width="2" opacity=".7"/>
+      <path d="M269 161 A80 80 0 0 1 269 239" stroke="var(--ink)" stroke-width="2" opacity=".4"/>
+      <path d="M269 239 A80 80 0 0 1 200 280" stroke="var(--ink)" stroke-width="2" opacity=".7"/>
+      <path d="M200 280 A80 80 0 0 1 131 239" stroke="var(--ink)" stroke-width="2" opacity=".4"/>
+      <path d="M131 239 A80 80 0 0 1 131 161" stroke="var(--ink)" stroke-width="2" opacity=".7"/>
+      <path d="M131 161 A80 80 0 0 1 200 120" stroke="var(--ink)" stroke-width="2" opacity=".4"/>
+      <!-- Crosshair reticle -->
+      <line x1="200" y1="110" x2="200" y2="290" stroke="rgba(26,26,24,.2)" stroke-width="1"/>
+      <line x1="110" y1="200" x2="290" y2="200" stroke="rgba(26,26,24,.2)" stroke-width="1"/>
+      <!-- Center dot -->
+      <circle cx="200" cy="200" r="3.5" fill="var(--m)"/>
+    </svg>
+  </div>
+
+  <!-- Photo press frame -->
+  <div class="press-frame" aria-label="Portrait placeholder">
+    <div class="press-frame__inner">
+      <span class="press-frame__label t-mono">AK — 2026</span>
+    </div>
+  </div>
+
+  <!-- Hero text -->
+  <div class="hero-text wrap">
+    <p class="section-label reveal" style="margin-bottom:1.25rem">Stuttgart / DE — Full-Stack &amp; PM</p>
+    <h1 class="hero-h1 t-display reveal">
+      <span class="hero-h1__line">Ademir</span>
+      <span class="hero-h1__line hero-h1__green">Kadrić</span>
+    </h1>
+    <p class="hero-sub t-mono reveal">
+      Building polished digital products<br/>
+      at the intersection of design&nbsp;+&nbsp;engineering.
+    </p>
+    <a href="#work" class="hero-cta t-mono reveal">
+      See my work <span aria-hidden="true">↓</span>
+    </a>
+  </div>
+
+  <!-- Stats row -->
+  <div class="hero-stats wrap reveal" id="hero-stats">
+    <div class="stat">
+      <span class="stat__num t-display" data-count="12" data-suffix="+">0+</span>
+      <span class="stat__label t-mono">Projects</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num t-display" data-count="4" data-suffix="+">0+</span>
+      <span class="stat__label t-mono">Years XP</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num t-display" data-count="100" data-suffix="%">0%</span>
+      <span class="stat__label t-mono">Remote-Ready</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative; min-height: 100svh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding-bottom: 5rem; overflow: hidden;
+  }
+  .ring-wrap {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(300px, 58vw, 680px); aspect-ratio: 1;
+    pointer-events: none; z-index: 0;
+  }
+  .ring-outer, .ring-inner {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+  }
+  .cardinal {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px; fill: rgba(26,26,24,.28);
+  }
+  .press-frame {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(140px, 18vw, 260px); aspect-ratio: 3/4;
+    border: 1px solid rgba(26,26,24,.18); z-index: 1;
+    background: linear-gradient(145deg, #ddd9ce 0%, #bfbab0 100%);
+    overflow: hidden;
+  }
+  .press-frame__inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: flex-end; padding: .875rem;
+  }
+  .press-frame__label {
+    font-size: .55rem; letter-spacing: .18em;
+    text-transform: uppercase; opacity: .45;
+  }
+  .hero-text { position: relative; z-index: 2; }
+  .hero-h1 {
+    font-size: clamp(5.5rem, 14vw, 13rem);
+    line-height: .88; margin-bottom: 1.5rem;
+    display: flex; flex-direction: column;
+  }
+  .hero-h1__green { color: var(--m); }
+  .hero-sub {
+    font-size: .875rem; line-height: 1.75;
+    opacity: .6; max-width: 30ch; margin-bottom: 2rem;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .72rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none;
+    border: 1px solid var(--ink); padding: .75rem 1.5rem;
+    transition: background .3s ease, color .3s ease;
+  }
+  .hero-cta:hover { background: var(--ink); color: var(--paper); }
+  .hero-stats {
+    display: flex; gap: 4rem; margin-top: 4rem;
+    border-top: 1px solid rgba(26,26,24,.12); padding-top: 2rem;
+  }
+  .stat__num { font-size: clamp(2.5rem, 4vw, 3.5rem); display: block; }
+  .stat__label {
+    font-size: .6rem; letter-spacing: .15em; text-transform: uppercase;
+    opacity: .45; display: block; margin-top: .25rem;
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Generate tick marks dynamically
+  const tickGroup = document.getElementById('outer-ticks');
+  if (tickGroup) {
+    for (let i = 0; i < 60; i++) {
+      const angle = i * 6;
+      const isLong = i % 5 === 0;
+      const inner = isLong ? 170 : 178;
+      const outer = 190;
+      const rad = (angle - 90) * Math.PI / 180;
+      const x1 = 200 + inner * Math.cos(rad);
+      const y1 = 200 + inner * Math.sin(rad);
+      const x2 = 200 + outer * Math.cos(rad);
+      const y2 = 200 + outer * Math.sin(rad);
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', x1.toFixed(2));
+      line.setAttribute('y1', y1.toFixed(2));
+      line.setAttribute('x2', x2.toFixed(2));
+      line.setAttribute('y2', y2.toFixed(2));
+      line.setAttribute('stroke', 'rgba(26,26,24,.2)');
+      line.setAttribute('stroke-width', isLong ? '1.5' : '0.8');
+      tickGroup.appendChild(line);
+    }
+  }
+
+  // Stat counters
+  const stats = document.querySelectorAll<HTMLElement>('[data-count]');
+  const statsObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target as HTMLElement;
+      if (el.dataset.counted) return;
+      el.dataset.counted = '1';
+      const target = parseInt(el.dataset.count || '0');
+      const suffix = el.dataset.suffix || '';
+      gsap.to({ val: 0 }, {
+        val: target, duration: 1.8, ease: 'power2.out',
+        onUpdate() {
+          el.textContent = Math.round((this.targets()[0] as { val: number }).val) + suffix;
+        },
+      });
+      statsObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  stats.forEach(el => statsObs.observe(el));
+
+  // Scroll-pinned ring animation
+  const heroTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#hero',
+      pin: true,
+      scrub: 1.8,
+      start: 'top top',
+      end: '+=1600',
+    },
+  });
+  heroTl
+    .to('.ring-outer', { rotation: 100, transformOrigin: '50% 50%', ease: 'none' }, 0)
+    .to('.ring-inner', { rotation: -65, transformOrigin: '50% 50%', ease: 'none' }, 0)
+    .to('.press-frame', { scale: 0.88, y: -24, ease: 'none' }, 0)
+    .to(['.hero-sub', '.hero-stats', '.hero-cta'], { opacity: 0, y: -18, stagger: .05, ease: 'none' }, 0);
+</script>

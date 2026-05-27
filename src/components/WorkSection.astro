@@ -1,0 +1,53 @@
+---
+import { projects } from '../data/projects';
+import WorkCarousel from './WorkCarousel';
+---
+<section id="work" class="band band--ink">
+  <div class="wrap">
+    <span class="section-label" style="color:rgba(243,239,228,.4)">002 — Selected Work</span>
+    <div class="work-hl-wrap">
+      <h2 id="workHlA" class="work-hl t-display">Selected</h2>
+      <h2 id="workHlB" class="work-hl work-hl--green t-display">Work</h2>
+    </div>
+  </div>
+
+  <WorkCarousel
+    projects={projects.map(p => ({
+      title: p.title,
+      year:  p.year,
+      stack: p.stack,
+      description: p.description,
+      url: p.url,
+    }))}
+    client:visible
+  />
+</section>
+
+<style>
+  .work-hl-wrap {
+    display: flex; gap: 1.5rem; align-items: baseline;
+    flex-wrap: wrap; margin-bottom: 1rem;
+  }
+  .work-hl {
+    font-size: clamp(4rem, 11vw, 10rem);
+    line-height: .88; color: var(--paper);
+    clip-path: inset(100% 0 0 0);
+  }
+  .work-hl--green { color: var(--m3); }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  ScrollTrigger.create({
+    trigger: '#work',
+    start: 'top 80%',
+    once: true,
+    onEnter: () => {
+      gsap.to('#workHlA', { clipPath: 'inset(0% 0 0 0)', duration: .85, ease: 'expo.out' });
+      gsap.to('#workHlB', { clipPath: 'inset(0% 0 0 0)', duration: .85, ease: 'expo.out', delay: .14 });
+    },
+  });
+</script>
